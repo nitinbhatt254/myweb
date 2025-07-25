@@ -1,246 +1,192 @@
-<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<iframe width="700" height="700" src="https://www.youtube.com/embed/kvazBqAlx58" title="Put Your Head On My Shoulder" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-  
-<link href="data:image/x-icon;base64,AAABAAEAEBAQAAAAAAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAADk5u0AD/WdABQTEgDtE3kAD0L1AAsMDQAtCpQAvwhLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAERERERERERERAAAAAAARERAFVVVVAAEREFAAUABQABEQBQBQAAAAERAAAFAAAAMRcAAERgAAAzFwAAREAAADcTcCIgIiADN3MwIiAiIAM3czMgICAgMzd3MyIjIiMzdxFzMzMzMzd3ERczMzMzd3EREXczM3d3ERERF3M3d3EREAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rel="icon" type="image/x-icon">
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Account Signup & Walking Man</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Music Tube</title>
   <style>
-  
-   canvas {
-  background: transparent;
-  margin-top: 20px;
-      }
-      
-    form {
-      margin-top: 20px;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
       display: flex;
       flex-direction: column;
+      height: 100vh;
+    }
+
+    header {
+      background: #202020;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
       align-items: center;
+      justify-content: space-between;
     }
-    input, button {
+
+    header input {
+      padding: 7px;
+      width: 40%;
+      border-radius: 2px;
+      border: none;
+    }
+
+    .main {
+      display: flex;
+      flex: 1;
+      overflow: hidden;
+    }
+
+    aside {
+      width: 220px;
+      background: #f1f1f1;
       padding: 10px;
-      margin: 5px;
-      font-size: 1rem;
+      overflow-y: auto;
+    }
+
+    aside ul {
+      list-style: none;
+    }
+
+    aside ul li {
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    aside ul li:hover {
+      background: #ddd;
+    }
+
+    .content {
+      flex: 1;
+      background: #fff;
+      padding: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+      overflow-y: auto;
+    }
+
+    .video-card {
+      background: #f9f9f9;
       border-radius: 5px;
-      border: 1px solid #ccc;
+      overflow: hidden;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
-    button {
-      cursor: pointer;
-      background: linear-gradient(45deg, #ff6ec4, #7873f5);
-      color: white;
+
+    .video-card iframe {
+      width: 100%;
+      height: 180px;
       border: none;
     }
-    button:hover {
-      background: linear-gradient(45deg, #7873f5, #ff6ec4);
+
+    .video-info {
+      padding: 10px;
     }
-    #helloButton {
-      margin: 20px;
-      padding: 12px 28px;
-      font-size: 1.2rem;
-      font-weight: bold;
-      border: none;
-      border-radius: 25px;
-      cursor: pointer;
-      background: linear-gradient(45deg, #ff6ec4, #7873f5);
+
+    .video-info h4 {
+      margin-bottom: 5px;
+      font-size: 16px;
+    }
+
+    .video-info p {
+      color: #666;
+      font-size: 14px;
+    }
+
+    footer {
+      background: #202020;
       color: white;
-      text-decoration: none;
+      padding: 10px;
+      text-align: center;
     }
   </style>
-
 </head>
-<body >
-  <h2>Create Account</h2>
-<form id="signupForm">
-  <input type="text" id="username" placeholder="Enter Username" required>
-  <input type="password" id="password" placeholder="Enter Password" required>
-  <button type="submit">Create Account</button>
-</form><canvas id="canvas" width="800" height="400"></canvas>
+<body>
 
-<a id="helloButton" href="https://www.facebook.com/nitin.bhatt.825570" target="_blank">Message me</a>
+  <header>
+    <div><strong>🎵 MusicTube</strong></div>
+    <input type="text" placeholder="Search your vibe"/>
+    <div>🔔 👤</div>
+  </header>
 
-<script>
-const canvas = document.getElementById('canvas');
-const ctx = canvas.getContext('2d');
+  <div class="main">
+    <aside>
+      <ul>
+        <li>🏠 Home</li>
+        <li>🔥 Trending</li>
+        <li>🎧 Playlists</li>
+        <li>📜 Library</li>
+        <li>❤️ Favorites</li>
+      </ul>
+    </aside>
 
-function resize() {
-  canvas.width = window.innerWidth > 800 ? 800 : window.innerWidth - 40;
-  canvas.height = 300;
-}
-window.addEventListener('resize', resize);
-resize();
+    <div class="content">
+      <!-- Your Song Videos -->
+      <div class="video-card">
+        <iframe src="https://www.youtube.com/embed/aZ5ZclZTeTU" allowfullscreen></iframe>
+        <div class="video-info">
+          <h4>Chamber of Reflection</h4>
+          <p>Mac DeMarco</p>
+        </div>
+      </div>
 
-const manHeight = 100;
-const manWidth = 20;
-const groundY = canvas.height - 80;
-let xPos = -manWidth;
-const speed = 2;
-let step = 0;
-const stepSpeed = 0.1;
-let isStopped = false;
-const stopX = canvas.width / 2 - manWidth / 2;
-let stopTime = 0;
-const pauseDuration = 1500;
+      <div class="video-card">
+        <iframe src="https://www.youtube.com/embed/IxRQEihTqfg" allowfullscreen></iframe>
+        <div class="video-info">
+          <h4>Dark is the Night</h4>
+          <p>Audio Book (The Song)</p>
+        </div>
+      </div>
 
-function drawMan(ctx, x, y, step, smiling = false) {
-  ctx.save();
-  ctx.translate(x, y);
+      <div class="video-card">
+        <iframe src="https://www.youtube.com/embed/1rj4gG5a-3Y" allowfullscreen></iframe>
+        <div class="video-info">
+          <h4>Pixies – Where Is My Mind?</h4>
+          <p>Pixies</p>
+        </div>
+      </div>
 
-  ctx.lineWidth = 3;
-  ctx.strokeStyle = 'black';
-  ctx.fillStyle = 'white';
+      <div class="video-card">
+        <iframe src="https://www.youtube.com/embed/H1s0x6BI2CA" allowfullscreen></iframe>
+        <div class="video-info">
+          <h4>Mild High Club – Homage</h4>
+          <p>Mild High Club</p>
+        </div>
+      </div>
 
-  const shadowWidth = manWidth * 1.2;
-  const shadowHeight = 15;
-  ctx.beginPath();
-  const shadowGradient = ctx.createRadialGradient(0, 0, shadowHeight / 2, 0, 0, shadowWidth / 2);
-  shadowGradient.addColorStop(0, 'rgba(0,0,0,0.25)');
-  shadowGradient.addColorStop(1, 'rgba(0,0,0,0)');
-  ctx.fillStyle = shadowGradient;
-  ctx.ellipse(0, 15, shadowWidth / 2, shadowHeight / 2, 0, 0, Math.PI * 2);
-  ctx.fill();
+      <div class="video-card">
+        <iframe src="https://www.youtube.com/embed/vO2Su3erRIA" allowfullscreen></iframe>
+        <div class="video-info">
+          <h4>Kendrick Lamar – Money Trees</h4>
+          <p>ft. Jay Rock</p>
+        </div>
+      </div>
 
-  ctx.fillStyle = 'white';
-  ctx.strokeStyle = 'black';
+      <div class="video-card">
+        <iframe src="https://www.youtube.com/embed/h4UqMyldS7Q" allowfullscreen></iframe>
+        <div class="video-info">
+          <h4>Ice Cube – It Was a Good Day</h4>
+          <p>Ice Cube</p>
+        </div>
+      </div>
 
-  ctx.beginPath();
-  ctx.rect(-manWidth / 2, -manHeight, manWidth, manHeight);
-  ctx.fill();
-  ctx.stroke();
+      <div class="video-card">
+        <iframe src="https://www.youtube.com/embed/Zb2G1FkDGRg" allowfullscreen></iframe>
+        <div class="video-info">
+          <h4>Bad Habit</h4>
+          <p>Steve Lacy</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  const headRadius = 20;
-  ctx.beginPath();
-  ctx.arc(0, -manHeight - headRadius, headRadius, 0, Math.PI * 2);
-  ctx.fill();
-  ctx.stroke();
-
-  ctx.fillStyle = 'black';
-  const eyeY = -manHeight - headRadius - 5;
-  const eyeXOffset = 7;
-  const eyeRadius = 3;
-
-  ctx.beginPath();
-  ctx.arc(-eyeXOffset, eyeY, eyeRadius, 0, Math.PI * 2);
-  ctx.arc(eyeXOffset, eyeY, eyeRadius, 0, Math.PI * 2);
-  ctx.fill();
-
-  ctx.beginPath();
-  const mouthY = eyeY + 12;
-  if (smiling) {
-    ctx.arc(0, mouthY, 8, 0, Math.PI, false);
-  } else {
-    ctx.moveTo(-7, mouthY);
-    ctx.lineTo(7, mouthY);
-  }
-  ctx.stroke();
-
-  const swing = Math.sin(step * Math.PI * 2) * 0.5;
-  ctx.lineCap = 'round';
-
-  ctx.beginPath();
-  let leftArmX = -manWidth / 2;
-  let leftArmY = -manHeight * 0.7;
-  let armLength = 40;
-  ctx.moveTo(leftArmX, leftArmY);
-  ctx.lineTo(leftArmX + armLength * Math.sin(swing), leftArmY + armLength * Math.cos(swing));
-  let rightArmX = manWidth / 2;
-  let rightArmY = -manHeight * 0.7;
-  ctx.moveTo(rightArmX, rightArmY);
-  ctx.lineTo(rightArmX + armLength * Math.sin(-swing), rightArmY + armLength * Math.cos(-swing));
-  ctx.stroke();
-
-  ctx.beginPath();
-  let leftLegX = -manWidth / 4;
-  let leftLegY = 0;
-  let legLength = 50;
-  ctx.moveTo(leftLegX, leftLegY);
-  ctx.lineTo(leftLegX + legLength * Math.sin(-swing), leftLegY + legLength * Math.cos(-swing));
-  let rightLegX = manWidth / 4;
-  let rightLegY = 0;
-  ctx.moveTo(rightLegX, rightLegY);
-  ctx.lineTo(rightLegX + legLength * Math.sin(swing), rightLegY + legLength * Math.cos(swing));
-  ctx.stroke();
-  ctx.restore();
-}
-
-function drawSpeechBubble(ctx, x, y, text) {
-  ctx.save();
-  ctx.font = '20px Segoe UI';
-  ctx.textBaseline = 'top';
-  ctx.fillStyle = 'white';
-  ctx.strokeStyle = 'black';
-  ctx.lineWidth = 3;
-  ctx.shadowColor = 'rgba(0,0,0,0.3)';
-  ctx.shadowBlur = 4;
-
-  const padding = 12;
-  const textWidth = ctx.measureText(text).width;
-  const bubbleWidth = textWidth + padding * 2;
-  const bubbleHeight = 40;
-  const radius = 15;
-
-  ctx.beginPath();
-  ctx.moveTo(x, y + radius);
-  ctx.arcTo(x, y, x + radius, y, radius);
-  ctx.lineTo(x + bubbleWidth - radius, y);
-  ctx.arcTo(x + bubbleWidth, y, x + bubbleWidth, y + radius, radius);
-  ctx.lineTo(x + bubbleWidth, y + bubbleHeight - radius);
-  ctx.arcTo(x + bubbleWidth, y + bubbleHeight, x + bubbleWidth - radius, y + bubbleHeight, radius);
-  ctx.lineTo(x + radius + 20, y + bubbleHeight);
-  ctx.arcTo(x + 20, y + bubbleHeight, x + 20, y + bubbleHeight + 20, 20);
-  ctx.lineTo(x + 10, y + bubbleHeight);
-  ctx.lineTo(x, y + bubbleHeight);
-  ctx.closePath();
-
-  ctx.fill();
-  ctx.stroke();
-  ctx.fillStyle = 'black';
-  ctx.fillText(text, x + padding, y + (bubbleHeight - 20) / 2);
-  ctx.restore();
-}
-
-function animate(timestamp) {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  const smiling = isStopped;
-  drawMan(ctx, xPos, groundY, step, smiling);
-  if (isStopped) {
-    const bubbleX = xPos + 0.1;
-    const bubbleY = groundY - manHeight - 90;
-    drawSpeechBubble(ctx, bubbleX, bubbleY, 'Paisa patha ta!!');
-  }
-  if (!isStopped) {
-    xPos += speed;
-    step += stepSpeed;
-    if (xPos >= stopX) {
-      isStopped = true;
-      stopTime = performance.now();
-    }
-  } else {
-    if (performance.now() - stopTime > pauseDuration) {
-      isStopped = false;
-    }
-  }
-  if (xPos > canvas.width + manWidth) {
-    xPos = -manWidth;
-  }
-  requestAnimationFrame(animate);
-}
-
-animate();
-
-// Form submit
-const form = document.getElementById("signupForm");
-form.addEventListener("submit", function(e) {
-  e.preventDefault();
-  const username = document.getElementById("username").value.trim();
-  const password = document.getElementById("password").value.trim();
-  const msg = encodeURIComponent(`New account created!\nUsername: ${username}\nPassword: ${password}`);
-  window.open(`https://m.me/nitin.bhatt.825570?ref=${msg}`, "_blank");
-});
-</script><a href="https://www.facebook.com/nitin.bhatt.825570"> <font color="orange"face="American Typewriter" >©Nitin</font>💖</a>
-
+  <footer>
+    &copy; 2025 MusicTube by Nitin 🎶
+  </footer>
 
 </body>
-
 </html>
