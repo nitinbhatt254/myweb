@@ -6,17 +6,7 @@
   <title>Account Signup & Walking Man</title>
   <style>
   
-      body, html {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  background: url('background.jpg') no-repeat center center fixed;
-  background-size: 100% 100%; /* This stretches it */
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+  
   
    canvas {
   background: transparent;
@@ -58,8 +48,21 @@
       text-decoration: none;
     }
   </style>
+  #bgVideo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+}
 </head>
-<body><h2>Create Account</h2>
+<body><video autoplay muted loop id="bgVideo">
+  <source src="https://coverr.co/s3/mp4/Mountain.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+  <h2>Create Account</h2>
 <form id="signupForm">
   <input type="text" id="username" placeholder="Enter Username" required>
   <input type="password" id="password" placeholder="Enter Password" required>
