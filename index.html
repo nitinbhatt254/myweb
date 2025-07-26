@@ -3,189 +3,202 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Music Tube</title>
+  <title>R. Raman & Nitin - Journey</title>
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: Arial, sans-serif;
     }
 
     body {
+      font-family: 'Courier New', Courier, monospace;
+      background: linear-gradient(135deg, #e0f7fa, #d0c4ff);
+      color: #333;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    header, footer {
+      text-align: center;
+      padding: 20px 10px;
+      background: #ffffffaa;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      position: relative;
+      z-index: 1;
+    }
+
+    header h1 {
+      font-size: 1.8em;
+      background: linear-gradient(to right, #6a11cb, #2575fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+    }
+
+    main {
       display: flex;
       flex-direction: column;
-      height: 100vh;
-    }
-
-    header {
-      background: #202020;
-      color: white;
-      padding: 10px 20px;
-      display: flex;
       align-items: center;
-      justify-content: space-between;
+      padding: 20px 10px 60px;
+      position: relative;
+      z-index: 1;
     }
 
-    header input {
-      padding: 7px;
-      width: 40%;
-      border-radius: 2px;
-      border: none;
-    }
-
-    .main {
-      display: flex;
-      flex: 1;
+    .photo-container {
+      width: 90%;
+      max-width: 400px;
+      margin: 20px 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      border-radius: 15px;
       overflow: hidden;
+      animation: fadeIn 1s ease forwards;
+      opacity: 0;
     }
 
-    aside {
-      width: 220px;
-      background: #f1f1f1;
-      padding: 10px;
-      overflow-y: auto;
-    }
+    .photo-container:nth-child(1) { animation-delay: 0.3s; }
+    .photo-container:nth-child(3) { animation-delay: 0.6s; }
 
-    aside ul {
-      list-style: none;
-    }
-
-    aside ul li {
-      padding: 10px;
-      cursor: pointer;
-    }
-
-    aside ul li:hover {
-      background: #ddd;
-    }
-
-    .content {
-      flex: 1;
-      background: #fff;
-      padding: 20px;
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 20px;
-      overflow-y: auto;
-    }
-
-    .video-card {
-      background: #f9f9f9;
-      border-radius: 5px;
-      overflow: hidden;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-
-    .video-card iframe {
+    .photo-container img {
       width: 100%;
-      height: 180px;
-      border: none;
+      display: block;
     }
 
-    .video-info {
-      padding: 10px;
-    }
-
-    .video-info h4 {
-      margin-bottom: 5px;
-      font-size: 16px;
-    }
-
-    .video-info p {
-      color: #666;
-      font-size: 14px;
-    }
-
-    footer {
-      background: #202020;
-      color: white;
-      padding: 10px;
+    .blog {
+      width: 90%;
+      max-width: 600px;
+      margin: 20px 0;
+      padding: 20px;
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       text-align: center;
+      animation: fadeIn 1s ease forwards;
+      opacity: 0;
+    }
+
+    .blog:nth-of-type(2) { animation-delay: 0.9s; }
+    .blog:nth-of-type(4) { animation-delay: 1.2s; }
+
+    .blog h2 {
+      font-size: 1.6em;
+      background: linear-gradient(to right, #ff6ec4, #7873f5);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 10px;
+    }
+
+    .blog p {
+      font-size: 1.05em;
+      color: #444;
+      line-height: 1.6;
+    }
+
+    .dino {
+      position: fixed;
+      width: 120px;
+      top: 0;
+      left: 0;
+      z-index: 9999;
+      display: flex;
+      align-items: flex-end;
+      animation: dinoRun 20s linear infinite;
+      pointer-events: none;
+    }
+
+    .dino img {
+      width: 100px;
+      height: auto;
+    }
+
+    .bubble {
+      background: white;
+      padding: 6px 10px;
+      border-radius: 20px;
+      margin-left: 8px;
+      font-size: 13px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      white-space: nowrap;
+    }
+
+    footer p {
+      font-size: 0.9em;
+      color: #555;
+    }
+
+    @keyframes dinoRun {
+      0%   { transform: translate(0vw, 0vh); }
+      10%  { transform: translate(10vw, 20vh); }
+      20%  { transform: translate(20vw, 10vh); }
+      30%  { transform: translate(30vw, 30vh); }
+      40%  { transform: translate(40vw, 15vh); }
+      50%  { transform: translate(50vw, 35vh); }
+      60%  { transform: translate(60vw, 25vh); }
+      70%  { transform: translate(70vw, 45vh); }
+      80%  { transform: translate(80vw, 30vh); }
+      90%  { transform: translate(90vw, 50vh); }
+      100% { transform: translate(100vw, 60vh); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.4em;
+      }
+      .blog h2 {
+        font-size: 1.3em;
+      }
     }
   </style>
 </head>
 <body>
 
   <header>
-    <div><strong>🎵 MusicTube</strong></div>
-    <input type="text" placeholder="Search your vibe"/>
-    <div>🔔 👤</div>
+    <h1>🌟 The Enchanted Story of R. Raman & Nitin</h1>
   </header>
 
-  <div class="main">
-    <aside>
-      <ul>
-        <li>🏠 Home</li>
-        <li>🔥 Trending</li>
-        <li>🎧 Playlists</li>
-        <li>📜 Library</li>
-        <li>❤️ Favorites</li>
-      </ul>
-    </aside>
-
-    <div class="content">
-      <!-- Your Song Videos -->
-      <div class="video-card">
-        <iframe src="https://www.youtube.com/embed/aZ5ZclZTeTU" allowfullscreen></iframe>
-        <div class="video-info">
-          <h4>Chamber of Reflection</h4>
-          <p>Mac DeMarco</p>
-        </div>
-      </div>
-
-      <div class="video-card">
-        <iframe src="https://www.youtube.com/embed/IxRQEihTqfg" allowfullscreen></iframe>
-        <div class="video-info">
-          <h4>Dark is the Night</h4>
-          <p>Audio Book (The Song)</p>
-        </div>
-      </div>
-
-      <div class="video-card">
-        <iframe src="https://www.youtube.com/embed/1rj4gG5a-3Y" allowfullscreen></iframe>
-        <div class="video-info">
-          <h4>Pixies – Where Is My Mind?</h4>
-          <p>Pixies</p>
-        </div>
-      </div>
-
-      <div class="video-card">
-        <iframe src="https://www.youtube.com/embed/H1s0x6BI2CA" allowfullscreen></iframe>
-        <div class="video-info">
-          <h4>Mild High Club – Homage</h4>
-          <p>Mild High Club</p>
-        </div>
-      </div>
-
-      <div class="video-card">
-        <iframe src="https://www.youtube.com/embed/vO2Su3erRIA" allowfullscreen></iframe>
-        <div class="video-info">
-          <h4>Kendrick Lamar – Money Trees</h4>
-          <p>ft. Jay Rock</p>
-        </div>
-      </div>
-
-      <div class="video-card">
-        <iframe src="https://www.youtube.com/embed/h4UqMyldS7Q" allowfullscreen></iframe>
-        <div class="video-info">
-          <h4>Ice Cube – It Was a Good Day</h4>
-          <p>Ice Cube</p>
-        </div>
-      </div>
-
-      <div class="video-card">
-        <iframe src="https://www.youtube.com/embed/Zb2G1FkDGRg" allowfullscreen></iframe>
-        <div class="video-info">
-          <h4>Bad Habit</h4>
-          <p>Steve Lacy</p>
-        </div>
-      </div>
+  <main>
+    <!-- Photo 1 -->
+    <div class="photo-container">
+      <img src="r raman.jpg" alt="R. Raman" />
     </div>
+
+    <!-- Blog 1 -->
+    <div class="blog">
+      <h2>✨ The Journey Begins</h2>
+      <p>
+        In the soft light of the early morning, Raman set out on a journey not of distance, but of dreams.
+        With courage in his heart and stars in his eyes, he walked toward the unknown, writing his story one step at a time.
+      </p>
+    </div>
+
+    <!-- Photo 2 -->
+    <div class="photo-container">
+      <img src="nitin.jpg" alt="Nitin" />
+    </div>
+
+    <!-- Blog 2 -->
+    <div class="blog">
+      <h2>🌈 Colours of the Soul</h2>
+      <p>
+        Life isn’t always black and white — it’s a dance of colour, chaos, and calm.
+        Nitin saw the world not just as it was, but as it could be — more kind, more curious, more alive.
+      </p>
+    </div>
+  </main>
+
+  <!-- Dino running over everything -->
+  <div class="dino">
+    <img src="https://i.imgur.com/LwCYmcM.gif" alt="Running Dino" />
+    <div class="bubble">I'm gay 🗨️</div>
   </div>
 
   <footer>
-    &copy; 2025 MusicTube by Nitin 🎶
+    <p>© 2025 Raman & Nitin. All rights reserved.</p>
   </footer>
 
 </body>
