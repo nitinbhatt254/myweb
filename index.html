@@ -1,244 +1,167 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Nitin bhaneko Don Ho</title>
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>✨ Dreamscape World 2.0 ✨</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Nunito&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-    }
+    }body {
+  font-family: 'Nunito', sans-serif;
+  background: linear-gradient(to bottom, #0b0b2c, #01010f);
+  overflow: hidden;
+  color: #fff;
+}
 
-    body {
-      font-family: 'Courier New', Courier, monospace;
-      background: linear-gradient(135deg, #e0f7fa, #d0c4ff);
-      overflow-x: hidden;
-      min-height: 100vh;
-      position: relative;
-    }
+h1 {
+  font-family: 'Orbitron', sans-serif;
+  text-align: center;
+  font-size: 3rem;
+  padding: 40px 20px;
+  color: #ffe600;
+  text-shadow: 0 0 10px #00f0ff;
+}
 
-    header {
-      text-align: center;
-      padding: 30px 20px;
-      background: rgba(255, 255, 255, 0.4);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
+.bubbles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  pointer-events: none;
+  z-index: 5;
+}
 
-    header h1 {
-      font-size: 2em;
-      background: linear-gradient(to right, #00c6ff, #0072ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 2px 2px 10px rgba(0,0,0,0.15);
-    }
+.bubble {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  animation: floatUp 8s infinite ease-in;
+}
 
-    main {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 30px 10px 80px;
-    }
+@keyframes floatUp {
+  0% {
+    transform: translateY(100vh) scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) scale(1);
+    opacity: 0;
+  }
+}
 
-    .photo-container {
-      width: 90%;
-      max-width: 420px;
-      margin: 30px 0;
-      border-radius: 20px;
-      overflow: hidden;
-      backdrop-filter: blur(8px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-      animation: fadeIn 1s ease forwards;
-      opacity: 0;
-    }
+.fairy {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: url('https://i.ibb.co/sJwXgb2/fairy.gif') no-repeat center center/contain;
+  pointer-events: none;
+  z-index: 10;
+}
 
-    .photo-container:nth-child(1) { animation-delay: 0.3s; }
-    .photo-container:nth-child(3) { animation-delay: 0.6s; }
+.stars {
+  background: url('https://i.ibb.co/vD1q8FP/stars-bg.gif') repeat;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
 
-    .photo-container img {
-      width: 100%;
-      display: block;
-    }
+.content {
+  text-align: center;
+  padding: 30px;
+  max-width: 800px;
+  margin: 0 auto;
+  z-index: 2;
+  position: relative;
+}
 
-    .blog {
-      width: 90%;
-      max-width: 700px;
-      margin: 20px 0;
-      padding: 30px;
-      border-radius: 20px;
-      background: rgba(255, 255, 255, 0.85);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-      text-align: center;
-      animation: fadeIn 1s ease forwards;
-      opacity: 0;
-    }
+.btn {
+  background: #00f0ff;
+  border: none;
+  padding: 10px 20px;
+  color: #fff;
+  font-size: 1.2rem;
+  border-radius: 25px;
+  cursor: pointer;
+  box-shadow: 0 0 15px #00f0ff;
+  margin-top: 20px;
+}
 
-    .blog:nth-of-type(2) { animation-delay: 0.9s; }
-    .blog:nth-of-type(4) { animation-delay: 1.2s; }
+.btn:hover {
+  background: #ffe600;
+  color: #000;
+}
 
-    .blog h2 {
-      font-size: 1.7em;
-      background: linear-gradient(to right, #ff6ec4, #7873f5);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 15px;
-    }
+.chatbot-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 350px;
+  height: 500px;
+  background: #1c1c3c;
+  border-radius: 15px;
+  box-shadow: 0 0 20px #00f0ff;
+  overflow: hidden;
+  z-index: 20;
+}
 
-    .blog p {
-      font-size: 1.1em;
-      color: #444;
-      line-height: 1.7;
-    }
+iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
 
-    .dino {
-      position: fixed;
-      width: 100px;
-      top: 10vh;
-      left: 10vw;
-      z-index: 999;
-      animation: floatDino 15s ease-in-out infinite;
-      pointer-events: none;
-    }
-
-    .dino img {
-      width: 100%;
-      height: auto;
-      filter: drop-shadow(0 0 6px rgba(0,0,0,0.3));
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px 10px;
-      background: rgba(255, 255, 255, 0.4);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
-    }
-
-    footer p {
-      font-size: 0.9em;
-      color: #555;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(40px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes floatDino {
-      0%   { transform: translate(0, 0); }
-      25%  { transform: translate(20vw, -10vh) rotate(8deg); }
-      50%  { transform: translate(40vw, 5vh) rotate(-10deg); }
-      75%  { transform: translate(60vw, -5vh) rotate(5deg); }
-      100% { transform: translate(80vw, 0vh); }
-    }
-
-    .bubble {
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background: rgba(255, 255, 255, 0.5);
-      border-radius: 50%;
-      pointer-events: none;
-      animation: flyUp 2s ease-out forwards;
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
-    }
-
-    @keyframes flyUp {
-      0% {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-      }
-      100% {
-        opacity: 0;
-        transform: scale(1.5) translateY(-200px);
-      }
-    }
-
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 1.6em;
-      }
-
-      .blog h2 {
-        font-size: 1.3em;
-      }
-
-      .blog p {
-        font-size: 1em;
-      }
-    }
   </style>
-</head>
-<body>
+</head><body>
+  <div class="stars"></div>
+  <h1>Welcome to Dreamscape ✨ 2.0</h1>
+  <div class="content">
+    <p>Experience a futuristic fantasy world like never before. Tap anywhere and let the tech-magic unfold!</p>
+    <button class="btn" onclick="playSound()">Click for Magic 🌌</button>
+  </div>  <div class="bubbles" id="bubble-container"></div>
+  <div class="fairy" id="fairy"></div>
+  <div class="chatbot-container">
+    <!-- Embed an AI chatbot using a free service like Tidio or Landbot or Chatbase -->
+    <iframe src="https://www.chatbase.co/chatbot-iframe/clszyh8v1001h0fl7cocg8t8h"></iframe>
+  </div><audio id="touchSound" src="https://www.soundjay.com/buttons/sounds/button-35.mp3"></audio>
 
-  <header>
-    <h1>🌌 Herdai Xuu Chatak Tero</h1>
-  </header>
-
-  <main>
-    <div class="photo-container">
-      <img src="raman.jpg" alt="Raman" />
-    </div>
-
-    <div class="blog">
-      <h2>🚀 A New Chapter</h2>
-      <p>
-        From Mahendranagar to the stars — this journey is more than a story; it’s an evolution. Filled with courage, color, and cosmic energy.
-      </p>
-    </div>
-
-    <div class="photo-container">
-      <img src="nitin.jpg" alt="Nitin" />
-    </div>
-
-    <div class="blog">
-      <h2>🌈 Vibes of the Future</h2>
-      <p>
-        Welcome to a space where identity means celebration. A kaleidoscope of dreams, hopes, and fearless freedom — because you were born to shine.
-      </p>
-    </div>
-  </main>
-
-  <!-- Floating Dino -->
-  <div class="dino">
-    <img src="https://i.imgur.com/LwCYmcM.gif" alt="Floating Dino" />
-  </div>
-
-  <footer>
-    <p>© 2025 Nitin. All rights reserved. 🚀 Powered by dreams.</p>
-  </footer>
-
-  <!-- Sound & Bubble Logic -->
-  <audio id="clickSound" src="sound.mp3" preload="auto"></audio>
   <script>
-    document.addEventListener('click', (e) => {
-      createBubble(e.clientX, e.clientY);
-      playSound();
-    });
-
-    document.addEventListener('touchstart', (e) => {
-      const touch = e.touches[0];
-      createBubble(touch.clientX, touch.clientY);
-      playSound();
-    });
+    const bubbleContainer = document.getElementById('bubble-container');
+    const fairy = document.getElementById('fairy');
+    const sound = document.getElementById('touchSound');
 
     function createBubble(x, y) {
       const bubble = document.createElement('div');
+      const size = Math.random() * 30 + 20;
       bubble.classList.add('bubble');
-      bubble.style.left = `${x - 10}px`;
-      bubble.style.top = `${y - 10}px`;
-      document.body.appendChild(bubble);
-      setTimeout(() => bubble.remove(), 2000);
+      bubble.style.width = `${size}px`;
+      bubble.style.height = `${size}px`;
+      bubble.style.left = `${x - size / 2}px`;
+      bubble.style.top = `${y - size / 2}px`;
+      bubble.style.background = `rgba(255, 255, 255, ${Math.random()})`;
+      bubbleContainer.appendChild(bubble);
+      setTimeout(() => bubble.remove(), 8000);
+    }
+
+    function moveFairy(x, y) {
+      fairy.style.left = `${x - 50}px`;
+      fairy.style.top = `${y - 50}px`;
     }
 
     function playSound() {
-      const sound = document.getElementById('clickSound');
       sound.currentTime = 0;
-      sound.play().catch(() => {});
+      sound.play();
     }
-  </script>
 
-</body>
-</html>
+    document.body.addEventListener('click', e => {
+      createBubble(e.clientX, e.clientY);
+      moveFairy(e.clientX, e.clientY);
+      playSound();
+    });
+  </script></body></html>
