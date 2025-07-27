@@ -5,14 +5,140 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Nitin bhaneko Don Ho</title>
   <style>
-    /* Previous styles omitted for brevity — keep everything as is above */
-    /* Add this to end of your <style> */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Courier New', Courier, monospace;
+      background: linear-gradient(135deg, #e0f7fa, #d0c4ff);
+      overflow-x: hidden;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    header {
+      text-align: center;
+      padding: 30px 20px;
+      background: rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+      font-size: 2em;
+      background: linear-gradient(to right, #00c6ff, #0072ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.15);
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px 10px 80px;
+    }
+
+    .photo-container {
+      width: 90%;
+      max-width: 420px;
+      margin: 30px 0;
+      border-radius: 20px;
+      overflow: hidden;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      animation: fadeIn 1s ease forwards;
+      opacity: 0;
+    }
+
+    .photo-container:nth-child(1) { animation-delay: 0.3s; }
+    .photo-container:nth-child(3) { animation-delay: 0.6s; }
+
+    .photo-container img {
+      width: 100%;
+      display: block;
+    }
+
+    .blog {
+      width: 90%;
+      max-width: 700px;
+      margin: 20px 0;
+      padding: 30px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.85);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      text-align: center;
+      animation: fadeIn 1s ease forwards;
+      opacity: 0;
+    }
+
+    .blog:nth-of-type(2) { animation-delay: 0.9s; }
+    .blog:nth-of-type(4) { animation-delay: 1.2s; }
+
+    .blog h2 {
+      font-size: 1.7em;
+      background: linear-gradient(to right, #ff6ec4, #7873f5);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 15px;
+    }
+
+    .blog p {
+      font-size: 1.1em;
+      color: #444;
+      line-height: 1.7;
+    }
+
+    .dino {
+      position: fixed;
+      width: 100px;
+      top: 10vh;
+      left: 10vw;
+      z-index: 999;
+      animation: floatDino 15s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .dino img {
+      width: 100%;
+      height: auto;
+      filter: drop-shadow(0 0 6px rgba(0,0,0,0.3));
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px 10px;
+      background: rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+    }
+
+    footer p {
+      font-size: 0.9em;
+      color: #555;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes floatDino {
+      0%   { transform: translate(0, 0); }
+      25%  { transform: translate(20vw, -10vh) rotate(8deg); }
+      50%  { transform: translate(40vw, 5vh) rotate(-10deg); }
+      75%  { transform: translate(60vw, -5vh) rotate(5deg); }
+      100% { transform: translate(80vw, 0vh); }
+    }
 
     .bubble {
       position: absolute;
       width: 20px;
       height: 20px;
-      background: rgba(255, 255, 255, 0.6);
+      background: rgba(255, 255, 255, 0.5);
       border-radius: 50%;
       pointer-events: none;
       animation: flyUp 2s ease-out forwards;
@@ -29,48 +155,90 @@
         transform: scale(1.5) translateY(-200px);
       }
     }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.6em;
+      }
+
+      .blog h2 {
+        font-size: 1.3em;
+      }
+
+      .blog p {
+        font-size: 1em;
+      }
+    }
   </style>
 </head>
 <body>
 
-<!-- Your existing content remains unchanged here -->
+  <header>
+    <h1>🌌 Herdai Xuu Chatak Tero</h1>
+  </header>
 
-<!-- Dino -->
-<div class="dino">
-  <img src="https://i.imgur.com/LwCYmcM.gif" alt="Floating Dino" />
-</div>
+  <main>
+    <div class="photo-container">
+      <img src="raman.jpg" alt="Raman" />
+    </div>
 
-<!-- Audio element -->
-<audio id="clickSound" src="sound.mp3" preload="auto"></audio>
+    <div class="blog">
+      <h2>🚀 A New Chapter</h2>
+      <p>
+        From Mahendranagar to the stars — this journey is more than a story; it’s an evolution. Filled with courage, color, and cosmic energy.
+      </p>
+    </div>
 
-<script>
-  // Create bubbles and play sound on touch/click
-  document.addEventListener('click', (e) => {
-    createBubble(e.clientX, e.clientY);
-    playSound();
-  });
+    <div class="photo-container">
+      <img src="nitin.jpg" alt="Nitin" />
+    </div>
 
-  document.addEventListener('touchstart', (e) => {
-    const touch = e.touches[0];
-    createBubble(touch.clientX, touch.clientY);
-    playSound();
-  });
+    <div class="blog">
+      <h2>🌈 Vibes of the Future</h2>
+      <p>
+        Welcome to a space where identity means celebration. A kaleidoscope of dreams, hopes, and fearless freedom — because you were born to shine.
+      </p>
+    </div>
+  </main>
 
-  function createBubble(x, y) {
-    const bubble = document.createElement('div');
-    bubble.classList.add('bubble');
-    bubble.style.left = `${x - 10}px`;
-    bubble.style.top = `${y - 10}px`;
-    document.body.appendChild(bubble);
-    setTimeout(() => bubble.remove(), 2000);
-  }
+  <!-- Floating Dino -->
+  <div class="dino">
+    <img src="https://i.imgur.com/LwCYmcM.gif" alt="Floating Dino" />
+  </div>
 
-  function playSound() {
-    const sound = document.getElementById('clickSound');
-    sound.currentTime = 0;
-    sound.play().catch(() => {}); // Prevent error if spam clicked
-  }
-</script>
+  <footer>
+    <p>© 2025 Nitin. All rights reserved. 🚀 Powered by dreams.</p>
+  </footer>
+
+  <!-- Sound & Bubble Logic -->
+  <audio id="clickSound" src="sound.mp3" preload="auto"></audio>
+  <script>
+    document.addEventListener('click', (e) => {
+      createBubble(e.clientX, e.clientY);
+      playSound();
+    });
+
+    document.addEventListener('touchstart', (e) => {
+      const touch = e.touches[0];
+      createBubble(touch.clientX, touch.clientY);
+      playSound();
+    });
+
+    function createBubble(x, y) {
+      const bubble = document.createElement('div');
+      bubble.classList.add('bubble');
+      bubble.style.left = `${x - 10}px`;
+      bubble.style.top = `${y - 10}px`;
+      document.body.appendChild(bubble);
+      setTimeout(() => bubble.remove(), 2000);
+    }
+
+    function playSound() {
+      const sound = document.getElementById('clickSound');
+      sound.currentTime = 0;
+      sound.play().catch(() => {});
+    }
+  </script>
 
 </body>
 </html>
