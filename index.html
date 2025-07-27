@@ -3,199 +3,74 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Nitin bhaneko don ho</title>
+  <title>Nitin bhaneko Don Ho</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Courier New', Courier, monospace;
-      background: linear-gradient(135deg, #e0f7fa, #d0c4ff);
-      color: #333;
-      overflow-x: hidden;
-      position: relative;
-    }
-
-    header, footer {
-      text-align: center;
-      padding: 20px 10px;
-      background: #ffffffaa;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      position: relative;
-      z-index: 1;
-    }
-
-    header h1 {
-      font-size: 1.8em;
-      background: linear-gradient(to right, #6a11cb, #2575fc);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
-    }
-
-    main {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 20px 10px 60px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .photo-container {
-      width: 90%;
-      max-width: 400px;
-      margin: 20px 0;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      border-radius: 15px;
-      overflow: hidden;
-      animation: fadeIn 1s ease forwards;
-      opacity: 0;
-    }
-
-    .photo-container:nth-child(1) { animation-delay: 0.3s; }
-    .photo-container:nth-child(3) { animation-delay: 0.6s; }
-
-    .photo-container img {
-      width: 100%;
-      display: block;
-    }
-
-    .blog {
-      width: 90%;
-      max-width: 600px;
-      margin: 20px 0;
-      padding: 20px;
-      background: #fff;
-      border-radius: 15px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      text-align: center;
-      animation: fadeIn 1s ease forwards;
-      opacity: 0;
-    }
-
-    .blog:nth-of-type(2) { animation-delay: 0.9s; }
-    .blog:nth-of-type(4) { animation-delay: 1.2s; }
-
-    .blog h2 {
-      font-size: 1.6em;
-      background: linear-gradient(to right, #ff6ec4, #7873f5);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 10px;
-    }
-
-    .blog p {
-      font-size: 1.05em;
-      color: #444;
-      line-height: 1.6;
-    }
-
-    .dino {
-      position: fixed;
-      width: 120px;
-      top: 0;
-      left: 0;
-      z-index: 9999;
-      display: flex;
-      align-items: flex-end;
-      animation: dinoRun 20s linear infinite;
-      pointer-events: none;
-    }
-
-    .dino img {
-      width: 100px;
-      height: auto;
-    }
+    /* Previous styles omitted for brevity — keep everything as is above */
+    /* Add this to end of your <style> */
 
     .bubble {
-      background: white;
-      padding: 6px 10px;
-      border-radius: 20px;
-      margin-left: 8px;
-      font-size: 13px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-      white-space: nowrap;
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 50%;
+      pointer-events: none;
+      animation: flyUp 2s ease-out forwards;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
     }
 
-    footer p {
-      font-size: 0.9em;
-      color: #555;
-    }
-
-    @keyframes dinoRun {
-      0%   { transform: translate(0vw, 0vh); }
-      10%  { transform: translate(10vw, 20vh); }
-      20%  { transform: translate(20vw, 10vh); }
-      30%  { transform: translate(30vw, 30vh); }
-      40%  { transform: translate(40vw, 15vh); }
-      50%  { transform: translate(50vw, 35vh); }
-      60%  { transform: translate(60vw, 25vh); }
-      70%  { transform: translate(70vw, 45vh); }
-      80%  { transform: translate(80vw, 30vh); }
-      90%  { transform: translate(90vw, 50vh); }
-      100% { transform: translate(100vw, 60vh); }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 1.4em;
+    @keyframes flyUp {
+      0% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
       }
-      .blog h2 {
-        font-size: 1.3em;
+      100% {
+        opacity: 0;
+        transform: scale(1.5) translateY(-200px);
       }
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>🌟Herdai xuu chatak tero </h1>
-  </header>
+<!-- Your existing content remains unchanged here -->
 
-  <main>
-    <!-- Photo 1 -->
-    <div class="photo-container">
-      <img src="raman.jpg" alt="Raman" />
-    </div>
+<!-- Dino -->
+<div class="dino">
+  <img src="https://i.imgur.com/LwCYmcM.gif" alt="Floating Dino" />
+</div>
 
-    <!-- Blog 1 -->
-    <div class="blog">
-      <h2>✨ The Journey Begins</h2>
-      <p>
-        Raman is a gay boy from Mahendranagar Nepal. He love to date boys and once he tried to marry a boy but his parents resisted him so he once tried to run away from his house</p>
-    </div>
+<!-- Audio element -->
+<audio id="clickSound" src="sound.mp3" preload="auto"></audio>
 
-    <!-- Photo 2 -->
-    <div class="photo-container">
-      <img src="nitin.jpg" alt="Raman gay" />
-    </div>
+<script>
+  // Create bubbles and play sound on touch/click
+  document.addEventListener('click', (e) => {
+    createBubble(e.clientX, e.clientY);
+    playSound();
+  });
 
-    <!-- Blog 2 -->
-    <div class="blog">
-      <h2>🌈 Colours of the Soul</h2>
-      <p>
-        LIFE IS GAY FOR RAMAN! He love to see gay in his coffee too </p>
-    </div>
-  </main>
+  document.addEventListener('touchstart', (e) => {
+    const touch = e.touches[0];
+    createBubble(touch.clientX, touch.clientY);
+    playSound();
+  });
 
-  <!-- Dino running over everything -->
-  <div class="dino">
-    <img src="https://i.imgur.com/LwCYmcM.gif" alt="Running Dino" />
-    <div class="bubble">I'm gay 🗨️</div>
-  </div>
+  function createBubble(x, y) {
+    const bubble = document.createElement('div');
+    bubble.classList.add('bubble');
+    bubble.style.left = `${x - 10}px`;
+    bubble.style.top = `${y - 10}px`;
+    document.body.appendChild(bubble);
+    setTimeout(() => bubble.remove(), 2000);
+  }
 
-  <footer>
-    <p>© 2025 Nitin. All rights reserved.</p>
-  </footer>
+  function playSound() {
+    const sound = document.getElementById('clickSound');
+    sound.currentTime = 0;
+    sound.play().catch(() => {}); // Prevent error if spam clicked
+  }
+</script>
 
 </body>
 </html>
