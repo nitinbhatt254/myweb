@@ -1,167 +1,188 @@
-<!DOCTYPE html><html lang="en"><head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>✨ Dreamscape World 2.0 ✨</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Nunito&display=swap" rel="stylesheet">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nitin bhaneko Don Ho</title>
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-    }body {
-  font-family: 'Nunito', sans-serif;
-  background: linear-gradient(to bottom, #0b0b2c, #01010f);
-  overflow: hidden;
-  color: #fff;
-}
+    }
 
-h1 {
-  font-family: 'Orbitron', sans-serif;
-  text-align: center;
-  font-size: 3rem;
-  padding: 40px 20px;
-  color: #ffe600;
-  text-shadow: 0 0 10px #00f0ff;
-}
+    body {
+      font-family: 'Courier New', Courier, monospace;
+      background: linear-gradient(135deg, #e0f7fa, #d0c4ff);
+      color: #333;
+      overflow-x: hidden;
+      position: relative;
+    }
 
-.bubbles {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  pointer-events: none;
-  z-index: 5;
-}
+    header, footer {
+      text-align: center;
+      padding: 20px 10px;
+      background: #ffffffcc;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      position: relative;
+      z-index: 1;
+      backdrop-filter: blur(10px);
+    }
 
-.bubble {
-  position: absolute;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.3);
-  animation: floatUp 8s infinite ease-in;
-}
+    header h1 {
+      font-size: 2em;
+      background: linear-gradient(to right, #00c6ff, #0072ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+      letter-spacing: 1px;
+    }
 
-@keyframes floatUp {
-  0% {
-    transform: translateY(100vh) scale(0.5);
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(-100vh) scale(1);
-    opacity: 0;
-  }
-}
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 10px 60px;
+      position: relative;
+      z-index: 1;
+    }
 
-.fairy {
-  position: absolute;
-  width: 100px;
-  height: 100px;
-  background: url('https://i.ibb.co/sJwXgb2/fairy.gif') no-repeat center center/contain;
-  pointer-events: none;
-  z-index: 10;
-}
+    .photo-container {
+      width: 90%;
+      max-width: 400px;
+      margin: 25px 0;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      border-radius: 18px;
+      overflow: hidden;
+      animation: fadeIn 1s ease forwards;
+      opacity: 0;
+    }
 
-.stars {
-  background: url('https://i.ibb.co/vD1q8FP/stars-bg.gif') repeat;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-}
+    .photo-container:nth-child(1) { animation-delay: 0.3s; }
+    .photo-container:nth-child(3) { animation-delay: 0.6s; }
 
-.content {
-  text-align: center;
-  padding: 30px;
-  max-width: 800px;
-  margin: 0 auto;
-  z-index: 2;
-  position: relative;
-}
+    .photo-container img {
+      width: 100%;
+      display: block;
+    }
 
-.btn {
-  background: #00f0ff;
-  border: none;
-  padding: 10px 20px;
-  color: #fff;
-  font-size: 1.2rem;
-  border-radius: 25px;
-  cursor: pointer;
-  box-shadow: 0 0 15px #00f0ff;
-  margin-top: 20px;
-}
+    .blog {
+      width: 90%;
+      max-width: 600px;
+      margin: 20px 0;
+      padding: 25px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 18px;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+      text-align: center;
+      animation: fadeIn 1s ease forwards;
+      opacity: 0;
+      backdrop-filter: blur(8px);
+    }
 
-.btn:hover {
-  background: #ffe600;
-  color: #000;
-}
+    .blog:nth-of-type(2) { animation-delay: 0.9s; }
+    .blog:nth-of-type(4) { animation-delay: 1.2s; }
 
-.chatbot-container {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 350px;
-  height: 500px;
-  background: #1c1c3c;
-  border-radius: 15px;
-  box-shadow: 0 0 20px #00f0ff;
-  overflow: hidden;
-  z-index: 20;
-}
+    .blog h2 {
+      font-size: 1.7em;
+      background: linear-gradient(to right, #ff6ec4, #7873f5);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 12px;
+    }
 
-iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-}
+    .blog p {
+      font-size: 1.05em;
+      color: #444;
+      line-height: 1.6;
+    }
 
+    .dino {
+      position: fixed;
+      width: 100px;
+      top: 10vh;
+      left: 10vw;
+      z-index: 1000;
+      animation: floatDino 15s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .dino img {
+      width: 100%;
+      height: auto;
+      filter: drop-shadow(0 0 6px rgba(0,0,0,0.2));
+    }
+
+    footer p {
+      font-size: 0.9em;
+      color: #555;
+    }
+
+    @keyframes floatDino {
+      0%   { transform: translate(0, 0); }
+      25%  { transform: translate(20vw, -10vh) rotate(10deg); }
+      50%  { transform: translate(40vw, 5vh) rotate(-10deg); }
+      75%  { transform: translate(60vw, -5vh) rotate(5deg); }
+      100% { transform: translate(80vw, 0vh); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.5em;
+      }
+      .blog h2 {
+        font-size: 1.3em;
+      }
+    }
   </style>
-</head><body>
-  <div class="stars"></div>
-  <h1>Welcome to Dreamscape ✨ 2.0</h1>
-  <div class="content">
-    <p>Experience a futuristic fantasy world like never before. Tap anywhere and let the tech-magic unfold!</p>
-    <button class="btn" onclick="playSound()">Click for Magic 🌌</button>
-  </div>  <div class="bubbles" id="bubble-container"></div>
-  <div class="fairy" id="fairy"></div>
-  <div class="chatbot-container">
-    <!-- Embed an AI chatbot using a free service like Tidio or Landbot or Chatbase -->
-    <iframe src="https://www.chatbase.co/chatbot-iframe/clszyh8v1001h0fl7cocg8t8h"></iframe>
-  </div><audio id="touchSound" src="https://www.soundjay.com/buttons/sounds/button-35.mp3"></audio>
+</head>
+<body>
 
-  <script>
-    const bubbleContainer = document.getElementById('bubble-container');
-    const fairy = document.getElementById('fairy');
-    const sound = document.getElementById('touchSound');
+  <header>
+    <h1>🌌 Herdai Xuu Chatak Tero</h1>
+  </header>
 
-    function createBubble(x, y) {
-      const bubble = document.createElement('div');
-      const size = Math.random() * 30 + 20;
-      bubble.classList.add('bubble');
-      bubble.style.width = `${size}px`;
-      bubble.style.height = `${size}px`;
-      bubble.style.left = `${x - size / 2}px`;
-      bubble.style.top = `${y - size / 2}px`;
-      bubble.style.background = `rgba(255, 255, 255, ${Math.random()})`;
-      bubbleContainer.appendChild(bubble);
-      setTimeout(() => bubble.remove(), 8000);
-    }
+  <main>
+    <!-- Photo 1 -->
+    <div class="photo-container">
+      <img src="raman.jpg" alt="Photo 1" />
+    </div>
 
-    function moveFairy(x, y) {
-      fairy.style.left = `${x - 50}px`;
-      fairy.style.top = `${y - 50}px`;
-    }
+    <!-- Blog 1 -->
+    <div class="blog">
+      <h2>🚀 A New Chapter</h2>
+      <p>
+        This is the beginning of something magical. Stories that echo from the heart of Mahendranagar to the stars above — bold, beautiful, and brave.
+      </p>
+    </div>
 
-    function playSound() {
-      sound.currentTime = 0;
-      sound.play();
-    }
+    <!-- Photo 2 -->
+    <div class="photo-container">
+      <img src="nitin.jpg" alt="Photo 2" />
+    </div>
 
-    document.body.addEventListener('click', e => {
-      createBubble(e.clientX, e.clientY);
-      moveFairy(e.clientX, e.clientY);
-      playSound();
-    });
-  </script></body></html>
+    <!-- Blog 2 -->
+    <div class="blog">
+      <h2>🌈 Vibes of the Future</h2>
+      <p>
+        Welcome to a space where identity is freedom, and freedom is colorful. Every soul deserves to shine — just like the galaxies we gaze upon.
+      </p>
+    </div>
+  </main>
+
+  <!-- Floating Dino -->
+  <div class="dino">
+    <img src="https://i.imgur.com/LwCYmcM.gif" alt="Floating Dino" />
+  </div>
+
+  <footer>
+    <p>© 2025 Nitin. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
