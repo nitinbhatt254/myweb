@@ -1,17 +1,23 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shree Binayak Boys Hostel</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <title>Shree Binayak Boys Hostel,Shantinagar</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@700&family=Great+Vibes&display=swap" rel="stylesheet">
+
   <style>
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
       background: #000;
       color: white;
+      line-height: 1.6;
     }
+
     header {
       height: 100vh;
       background: url('background.jpg') no-repeat center center/cover;
@@ -22,43 +28,66 @@
       text-align: center;
       color: white;
       background-attachment: fixed;
+      padding: 0 20px;
     }
+
     header h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 3rem;
+      font-family: 'Great Vibes', cursive;
+      font-size: 4rem;
       color: gold;
-      text-shadow: 2px 2px 5px black;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+      margin-bottom: 15px;
+      letter-spacing: 2px;
     }
+
     header p {
-      font-size: 1.2rem;
-      max-width: 600px;
-      margin: 10px auto;
+      font-size: 1.3rem;
+      max-width: 650px;
+      margin: 0 auto;
+      font-weight: 300;
+      color: #f5f5f5;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
     }
+
     section {
-      padding: 60px 20px;
+      padding: 70px 20px;
       text-align: center;
     }
+
     h2 {
-      font-size: 2rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
       color: gold;
       margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
+
     .gallery, .videos {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
     }
+
     .gallery img, video {
       width: 100%;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.6);
+      border-radius: 15px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.7);
+      transition: transform 0.3s ease;
     }
+
+    .gallery img:hover, video:hover {
+      transform: scale(1.05);
+    }
+
     iframe {
       width: 100%;
       height: 400px;
       border: 0;
-      border-radius: 10px;
+      border-radius: 20px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.5);
     }
+
     form {
       max-width: 500px;
       margin: auto;
@@ -66,34 +95,50 @@
       flex-direction: column;
       gap: 15px;
     }
+
     input, textarea, button {
-      padding: 12px;
+      padding: 14px;
       border-radius: 8px;
       border: none;
       font-size: 1rem;
     }
+
+    input, textarea {
+      background: #222;
+      color: white;
+      border: 1px solid #444;
+    }
+
     button {
-      background: gold;
+      background: linear-gradient(45deg, gold, orange);
       color: black;
       font-weight: bold;
       cursor: pointer;
-      transition: 0.3s;
+      transition: all 0.3s;
     }
+
     button:hover {
       background: white;
       color: gold;
+      transform: scale(1.05);
     }
+
     footer {
       background: #111;
       padding: 20px;
       text-align: center;
       font-size: 0.9rem;
+      color: #aaa;
     }
+
     a {
       color: gold;
       text-decoration: none;
+      transition: 0.3s;
     }
+
     a:hover {
+      color: orange;
       text-decoration: underline;
     }
   </style>
@@ -109,20 +154,21 @@
   <!-- About -->
   <section>
     <h2>About Us</h2>
-    <p>Welcome to Shree Binayak Boys Hostel – your home away from home in the heart of Shantinagar, Kathmandu. 
-    We provide <span style="color: orange; font-weight: bold; font-size: 1.5rem; font-family: 'Playfair Display', serif; text-shadow: 2px 2px 5px black;">
-  ✨ Extremely Affordable ✨
-</span> secure, peaceful, and comfortable environment for students pursuing their academic goals.</p>
+    <p>
+      Welcome to Shree Binayak Boys Hostel – your home away from home in the heart of Shantinagar, Kathmandu. 
+      We provide <span style="color: orange; font-weight: bold; font-size: 1.5rem; font-family: 'Playfair Display', serif; text-shadow: 2px 2px 5px black;">✨ Extremely Affordable ✨</span> 
+      secure, peaceful, and comfortable environment for students pursuing their academic goals.
+    </p>
   </section>
 
   <!-- Gallery -->
   <section>
     <h2>Gallery</h2>
     <div class="gallery">
-      <img src="photo1.jpg" alt="Replace this with Hostel Front Photo">
-      <img src="photo2.jpg" alt="Replace this with Dining/Meals Photo">
-      <img src="photo3.jpg" alt="Replace this with Room Photo">
-      <img src="photo4.jpg" alt="Replace this with Study Area/Facilities Photo">
+      <img src="photo1.jpg" alt="Hostel Front">
+      <img src="photo2.jpg" alt="Dining Area">
+      <img src="photo3.jpg" alt="Room Interior">
+      <img src="photo4.jpg" alt="Study Area">
     </div>
   </section>
 
@@ -132,32 +178,21 @@
     <div class="videos">
       <video controls>
         <source src="video1.mp4" type="video/mp4">
-        Your browser does not support video.
       </video>
       <video controls>
         <source src="video2.mp4" type="video/mp4">
-        Your browser does not support video.
       </video>
       <video controls>
         <source src="video3.mp4" type="video/mp4">
-        Your browser does not support video.
       </video>
     </div>
   </section>
 
-  <!-- Google Maps -->
-<section>
-  <h2>Find Us</h2>
-  <!-- Embedded map centered at M8VW+2P3 Plus Code -->
-<iframe 
-  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.691385163073!2d85.33994237462788!3d27.69586667619098!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19c12f9f8db1%3A0xa1e5b75dc7bb3e94!2sM8VW%2B2P3%20%E0%A4%8A%E0%A4%82%20%E0%A4%B6%E0%A4%BE%E0%A4%A8%E0%A5%8D%E0%A4%A4%E0%A4%BF%20%E0%A4%9A%E0%A5%8B%E0%A4%95%2C%20Kathmandu%2044600!5e0!3m2!1sen!2snp!4v1724060869046!5m2!1sen!2snp" 
-  width="100%" 
-  height="400" 
-  style="border:0; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.3);" 
-  allowfullscreen="" 
-  loading="lazy" 
-  referrerpolicy="no-referrer-when-downgrade">
-</iframe>
+  <!-- Map -->
+  <section>
+    <h2>Find Us</h2>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!..." allowfullscreen="" loading="lazy"></iframe>
+  </section>
 
   <!-- Contact -->
   <section>
@@ -173,7 +208,7 @@
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2025 Shree Binayak Boys Hostel | Designed by Nitin in Shantinagar</p>
+    <p>&copy; © 2025 Shree Binayak Boys Hostel | Designed by Nitin🌸</p>
   </footer>
 
 </body>
