@@ -1,185 +1,89 @@
-
-<!DOCTYPE html><html lang="en">
+<!doctype html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shree Binayak Boys Hostel, Shantinagar</title><!-- Fonts --><link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet"><style>
-  body {
-    margin: 0;
-    font-family: 'Roboto Mono', monospace;
-    background: linear-gradient(135deg, #fdfbfb, #ebedee);
-    color: #222;
-    line-height: 1.6;
-  }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MOST WANTED — Sabin</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-  /* Navbar */
-  nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    color: #fff;
-    border-bottom: 4px solid #ff6600;
-  }
-  nav h2 {
-    margin: 0;
-    font-size: 1.5rem;
-  }
-  nav ul {
-    list-style: none;
-    display: flex;
-    gap: 1.5rem;
-    margin: 0;
-    padding: 0;
-  }
-  nav a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: 700;
-  }
-  nav a:hover {
-    color: #ffd700;
-  }
+    body {
+      font-family: "Impact", "Arial Black", sans-serif;
+      background: radial-gradient(circle at center, #111 0%, #000 100%);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 20px;
+    }
 
-  /* Header */
-  header {
-    min-height: 55vh;
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: #fff;
-    border-bottom-left-radius: 2rem;
-    border-bottom-right-radius: 2rem;
-    padding: 2rem;
-  }
+    h1 {
+      font-size: clamp(48px, 9vw, 100px);
+      color: orange;
+      text-transform: uppercase;
+      text-shadow: 0 0 20px rgba(255,140,0,0.5);
+      letter-spacing: 4px;
+      margin-bottom: 30px;
+      font-weight: 900;
+      text-align: center;
+    }
 
-  header h1 {
-    font-size: 3rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    letter-spacing: 1px;
-  }
+    .poster {
+      background: #222;
+      border: 8px solid orange;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 0 40px rgba(255,140,0,0.4);
+      text-align: center;
+      width: min(90%, 600px);
+    }
 
-  header p {
-    font-size: 1.2rem;
-    max-width: 650px;
-    margin: 0 auto;
-    font-weight: 400;
-  }
+    img {
+      width: 100%;
+      border-radius: 8px;
+      border: 4px solid orange;
+      margin-bottom: 20px;
+      object-fit: cover;
+      box-shadow: 0 0 30px rgba(255,140,0,0.4);
+    }
 
-  /* Sections */
-  section {
-    max-width: 1000px;
-    margin: 3rem auto;
-    padding: 2rem;
-    background: #fff;
-    border-radius: 1.5rem;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-  }
+    h2 {
+      font-size: clamp(26px, 5vw, 42px);
+      color: orange;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
 
-  section h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    color: #333;
-  }
+    p {
+      font-size: 16px;
+      color: #ddd;
+      line-height: 1.6;
+      text-align: center;
+      margin: 0 auto;
+      max-width: 500px;
+    }
 
-  section p {
-    font-size: 1rem;
-    color: #555;
-  }
+    .tagline {
+      margin-top: 25px;
+      font-style: italic;
+      color: #bbb;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <h1>MOST WANTED</h1>
 
-  span.highlight {
-    color: #ff6600;
-    font-weight: 700;
-    font-size: 1.1rem;
-  }
-
-  /* Cards */
-  .cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-    margin-top: 1.5rem;
-  }
-  .card {
-    background: #f9f9f9;
-    border-radius: 1rem;
-    padding: 1.5rem;
-    text-align: center;
-    transition: transform 0.2s ease;
-  }
-  .card:hover {
-    transform: translateY(-5px);
-  }
-  .card h3 {
-    font-size: 1.3rem;
-    margin: 0.5rem 0;
-  }
-  .card p {
-    color: #666;
-    font-size: 0.95rem;
-  }
-
-  /* Contact */
-  .contact a {
-    display: inline-block;
-    margin-top: 1rem;
-    padding: 0.75rem 1.5rem;
-    background: #4267B2;
-    color: #fff;
-    border-radius: 0.75rem;
-    text-decoration: none;
-    font-weight: 700;
-    transition: background 0.3s;
-  }
-  .contact a:hover {
-    background: #365899;
-  }
-</style></head>
-<body><!-- Navbar --><nav>
-  <h2>🏠 Hostel</h2>
-  <ul>
-    <li><a href="#about">About</a></li>
-    <li><a href="#facilities">Facilities</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav><!-- Hero Section --><header>
-  <h1>Shree Binayak Boys Hostel 🌅</h1>
-  <p>Shantinagar – The Educational Hub. A safe, modern, and student-friendly living space.</p>
-</header><!-- About --><section id="about">
-  <h2>ℹ️ About Us</h2>
-  <p>
-    Welcome to Shree Binayak Boys Hostel – your home away from home in the heart of Shantinagar, Kathmandu.
-    We provide <span class="highlight">Extremely Affordable</span>, secure, peaceful, and comfortable accommodation
-    for students pursuing their academic goals.
-  </p>
-</section><!-- Facilities --><section id="facilities">
-  <h2>✨ Our Facilities</h2>
-  <div class="cards">
-    <div class="card">
-      <h3>🛏️ Comfortable Rooms</h3>
-      <p>Spacious, clean, and fully furnished rooms for a cozy stay.</p>
-    </div>
-    <div class="card">
-      <h3>🍴 Healthy Meals</h3>
-      <p>Nutritious food served daily with a balanced diet plan.</p>
-    </div>
-    <div class="card">
-      <h3>📚 Study Environment</h3>
-      <p>A calm and quiet atmosphere for focused learning.</p>
-    </div>
-    <div class="card">
-      <h3>🔒 Security</h3>
-      <p>24/7 safety with CCTV surveillance and a peaceful environment.</p>
-    </div>
+  <div class="poster">
+    <img src="sabin.jpg" alt="Sabin - Most Wanted Poster" />
+    <h2>Sabin</h2>
+    <p>The most elusive figure in the underworld. No one knows where he came from, but everyone knows what happens when he shows up. Ruthless. Silent. Unstoppable.</p>
+    <p class="tagline">"Catch him… if you can."</p>
   </div>
-</section><!-- Contact --><section id="contact" class="contact">
-  <h2>📞 Contact Us</h2>
-  <p>For inquiries, feel free to reach us anytime. Stay connected with us on Facebook!</p>
-  <a href="https://www.facebook.com/nitin.bhatt.825570" target="_blank">🔗 Visit Our Facebook</a>
-</section></body>
+
+</body>
 </html>
